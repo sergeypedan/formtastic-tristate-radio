@@ -1,0 +1,6 @@
+---
+ru:
+  formtastic:
+    :no: Нет
+    :null: Неизвестно
+    :yes: Да
