@@ -79,19 +79,18 @@ class TristateRadioInput
   # For this to work, ActiveModel::Type::Boolean must be patched to resolve `UNSET_KEY` as nil
   #
   def selected?(choice)
-    puts "\n\nIn `selected?`"
-
-    print "choice: "
+    print "choice #=> "
     puts choice.inspect
 
-    puts "object.id: #{object.id}"
-    puts "method: #{method}"
+    cast_choice_value = ActiveModel::Type::Boolean.new.cast(choice_value(choice))
+    print "cast_choice_value #=> #{cast_choice_value.inspect}"
 
-    print "object.public_send(method): "
+    print "#{object.class.model_name}.find(#{object.id}).#{method} #=> "
     puts object.public_send(method).inspect
 
-    verdict = ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
-    puts "(selected?): #{verdict.inspect}"
+    verdict = cast_choice_value == object.public_send(method)
+    puts "selected? #=> #{verdict.inspect}"
+
     verdict
   end
 
