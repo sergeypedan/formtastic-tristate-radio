@@ -10,8 +10,8 @@ class TristateRadioInput
   include Formtastic::Inputs::Base::Choices
 
 
-  UNSET_KEY = :null
-  # UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
+  # UNSET_KEY = :null
+  UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
   #
   # Mind ActiveAdmin status resolving logic:
   # https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/views/components/status_tag.rb#L51
