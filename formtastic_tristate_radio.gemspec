@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.name             = "formtastic_tristate_radio"
   spec.platform         =  Gem::Platform::RUBY
   spec.rdoc_options     = ["--charset=UTF-8"]
-  spec.require_paths    = ["lib", "app/inputs", "app/models", "config/initializers", "config/locales"]
+  spec.require_paths    = ["lib", "app/inputs", "app/models/active_record", "config/initializers", "config/locales"]
   spec.version          = FormtasticTristateRadio::VERSION
 
   spec.required_ruby_version     = Gem::Requirement.new(">= 2.4.0")
