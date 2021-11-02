@@ -27,7 +27,6 @@ spec = Gem::Specification.new do |spec|
   }
   spec.name             = "formtastic_tristate_radio"
   spec.platform         =  Gem::Platform::RUBY
-  spec.post_install_message = "Thank you for installing #{spec.name}-#{spec.version}!"
   spec.rdoc_options     = ["--charset=UTF-8"]
   spec.require_paths    = ["lib", "app/inputs", "app/models", "config/initializers", "config/locales"]
   spec.version          = FormtasticTristateRadio::VERSION
