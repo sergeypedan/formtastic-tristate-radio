@@ -84,8 +84,8 @@ class TristateRadioInput
     print "choice: "
     puts choice.inspect
 
-    print "choice_value(choice): "
-    puts choice_value(choice).inspect
+    puts "object.id: #{object.id}"
+    puts "method: #{method}"
 
     print "object.public_send(method): "
     puts object.public_send(method).inspect
