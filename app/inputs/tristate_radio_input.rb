@@ -88,9 +88,11 @@ class TristateRadioInput
     puts choice_value(choice).inspect
 
     print "object.public_send(method): "
-    puts object.public_send(method)
+    puts object.public_send(method).inspect
 
-    ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
+    verdict = ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
+    puts "(selected?): #{verdict.inspect}"
+    verdict
   end
 
 
