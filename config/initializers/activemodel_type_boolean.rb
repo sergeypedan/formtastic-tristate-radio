@@ -5,9 +5,10 @@ module ActiveModel
     class Boolean < Value
       NULL_VALUES = [nil, "", "null", :null, "nil", :nil].to_set.freeze
       private def cast_value(value)
-        converted = NULL_VALUES.include?(value) ? nil : !FALSE_VALUES.include?(value)
-        puts "`#{value.inspect}` converted into `#{converted.inspect}`"
-        return converted
+        NULL_VALUES.include?(value) ? nil : !FALSE_VALUES.include?(value)
+        # converted = NULL_VALUES.include?(value) ? nil : !FALSE_VALUES.include?(value)
+        # puts "`#{value.inspect}` converted into `#{converted.inspect}`"
+        # return converted
       end
     end
   end
