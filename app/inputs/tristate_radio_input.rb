@@ -85,7 +85,7 @@ class TristateRadioInput
     puts choice.inspect
 
     print "choice_value(choice): "
-    puts choice_value(choice).inpsect
+    puts choice_value(choice).inspect
 
     print "object.public_send(method): "
     puts object.public_send(method)
