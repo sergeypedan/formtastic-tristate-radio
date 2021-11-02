@@ -7,7 +7,6 @@
 
 require_relative "lib/formtastic_tristate_radio/version"
 
-# spec = Gem::Specification.new do |spec|
 Gem::Specification.new do |spec|
   spec.authors          = ["Sergey Pedan"]
   spec.bindir           =  "exe"
@@ -48,41 +47,3 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "yard"
 end
-
-# def output(name, sp)
-#   puts "```ruby"
-#   puts name
-#   pp sp.public_send(name)
-#   puts "```"
-#   puts
-# end
-
-# [
-#   "name",
-#   "original_name",
-#   "full_name",
-#   "base_dir",
-#   "gem_dir",
-#   "full_gem_path",
-#   "datadir",
-#   "source_paths",
-#   "require_path",
-#   "raw_require_paths",
-#   "require_paths",
-#   "load_paths",
-#   "full_require_paths",
-#   "lib_files",
-#   "files",
-# ].each do |name| output(name, spec) end
-
-# puts "```ruby"
-# puts "$LOAD_PATH"
-# pp $LOAD_PATH
-# puts "```"
-# puts
-
-# puts
-# puts
-# puts
-
-# spec
