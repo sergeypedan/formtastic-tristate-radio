@@ -10,8 +10,8 @@ require_relative "lib/formtastic_tristate_radio/version"
 Gem::Specification.new do |spec|
   spec.authors          = ["Sergey Pedan"]
   spec.bindir           =  "exe"
-  spec.summary          =  "Have 3-state radiobuttons instead of a 2-state checkbox for your Boolean columns which can store NULLs"
-  spec.description      =  "#{spec.summary}. Does not change controls, you need to turn it on via `as: :radio_tristate` option."
+  spec.summary          =  "Have 3-state radiobuttons instead of a 2-state checkbox for your Boolean columns which can store NULL"
+  spec.description      =  "#{spec.summary}. Does not change controls, you need to turn it on via `as: :tristate_radio` option."
   spec.email            = ["sergey.pedan@gmail.com"]
   spec.executables      =   spec.files.grep(%r{\A#{spec.bindir}/}) { |f| File.basename(f) }
   spec.extra_rdoc_files = ["README.md"]
@@ -40,8 +40,8 @@ Gem::Specification.new do |spec|
   #   `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
   # end
 
-  spec.add_dependency "formtastic", ">= 3"
-  spec.add_dependency "rails", ">= 5"
+  spec.add_dependency "formtastic", ">= 3", "<= 4"
+  spec.add_dependency "rails", ">= 4", "<= 6"
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec-rails"

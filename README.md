@@ -74,7 +74,7 @@ Nothing is configurable yet. I think of making configurable which values are reg
 
 ## Dependencies
 
-Now the gem depends on Formtastic (naturally) and Rails. Frankly I am not sure whether I have time to make it work with other frameworks.
+Now the gem depends on [Formtastic](https://github.com/formtastic/formtastic) (naturally) and Rails. Frankly I am not sure whether I will have time to make it work with other frameworks.
 
 
 ## How it works
