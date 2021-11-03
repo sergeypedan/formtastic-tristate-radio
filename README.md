@@ -29,11 +29,14 @@ f.input :i_love_rock_and_roll, as: :tristate_radio
 You get:
 
 <fieldset>
-<label><input type="radio"> Yes<label>
-<br>
-<label><input type="radio"> No<label>
-<br>
-<label><input type="radio" checked> Unset<label>
+  <input type="radio">
+  <label>Yes</label>
+  <br>
+  <input type="radio">
+  <label>No</label>
+  <br>
+  <input type="radio" checked>
+  <label>Unset</label>
 </fieldset>
 
 In the future `:tristate_radio` will be registered for Boolean columns with `null` by default. Until then you have to assign it manually.
