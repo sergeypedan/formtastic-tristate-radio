@@ -65,8 +65,10 @@ ru:
     status_tag:
       :yes: Да
       :no: Нет
-      null: Неизвестно
+      unset: Неизвестно
 ```
+
+Notice that the key ActiveAdmin uses is “unset”, not “null”.
 
 
 ## Configuration
