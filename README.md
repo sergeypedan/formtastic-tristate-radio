@@ -42,24 +42,22 @@ In the future `:tristate_radio` will be registered for Boolean columns with `nul
 ## Installation
 
 ```ruby
-gem 'formtastic_tristate_radio'
+gem "formtastic_tristate_radio"
 ```
 
 Add translation for the new “unset” option:
 
 ```yaml
----
 ru:
   formtastic:
     # :yes: Да       # <- these two fall back to translations
-    # :no: Нет       #      in Formtastic gem
+    # :no: Нет       #    in Formtastic gem but have only English
     null: Неизвестно # <- this you must provide youself
 ```
 
 ActiveAdmin will automatically translate `nil` as “No”, so if you use ActiveAdmin, add translation like so:
 
 ```yaml
----
 ru:
   active_admin:
     status_tag:
@@ -72,6 +70,11 @@ ru:
 ## Configuration
 
 Nothing is configurable yet. I think of making configurable which values are regognized as `nil`.
+
+
+## Dependencies
+
+Now the gem depends on Formtastic (naturally) and Rails. Frankly I am not sure whether I have time to make it work with other frameworks.
 
 
 ## How it works
