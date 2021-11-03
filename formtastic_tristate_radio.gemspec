@@ -40,10 +40,11 @@ Gem::Specification.new do |spec|
   #   `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
   # end
 
-  spec.add_dependency "formtastic", ">= 3", "<= 4"
-  spec.add_dependency "rails", ">= 4", "<= 6"
+  spec.add_dependency "formtastic", ">= 3", "< 5"
+  spec.add_dependency "rails",      ">= 4", "< 7"
 
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "yard"
+  spec.add_development_dependency "coveralls", "~> 0.2"
+  spec.add_development_dependency "pry",       "~> 0.14"
+  spec.add_development_dependency "rake",      "~> 13"
+  spec.add_development_dependency "yard",      "~> 0.9"
 end
