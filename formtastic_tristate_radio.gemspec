@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.license          =  "MIT"
   spec.metadata         = {
     "changelog_uri"     => "#{spec.homepage}/blob/master/Changelog.md",
-    "documentation_uri" => "#{spec.homepage}#usage",
+    "documentation_uri" => "https://www.rubydoc.info/gems/#{spec.name}",
     "homepage_uri"      => spec.homepage,
     "source_code_uri"   => spec.homepage
   }
