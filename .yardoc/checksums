@@ -1,0 +1,5 @@
+app/models/active_record/base.rb 4df8d8f127075f2fd9a31bee946a528cf7903019
+lib/formtastic_tristate_radio.rb 61c62edebde27844fad2ce46374fc86e670fd4bd
+app/inputs/tristate_radio_input.rb d806761534d0726459ad48dfb829c7aacffcb074
+lib/formtastic_tristate_radio/engine.rb e92b9657cec990fa3531d147342b6bc2aa10c106
+lib/formtastic_tristate_radio/version.rb 5365a422bc9fe37f9d470c2eed5b49d6fae39bbf

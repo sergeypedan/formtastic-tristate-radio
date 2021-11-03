@@ -10,17 +10,15 @@ class TristateRadioInput
   include Formtastic::Inputs::Base::Choices
 
 
-  # UNSET_KEY = :null
-  UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
+  # No equals `:null`.
   #
-  # Mind ActiveAdmin status resolving logic:
-  # https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/views/components/status_tag.rb#L51
-  # In status tag builder the value is lowercased before casting into boolean, and the keyword for nil is "unset", so
-  # if we have lowercase "unset", translations from `ru.formtastic.unset` will be overriden by `ru.active_admin.status_tag.unset`.
+  # Mind ActiveAdmin [status resolving logic](https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/views/components/status_tag.rb#L51):
+  # in status tag builder the value is lowercased before casting into Boolean, and the keyword for nil is `"unset"`.
+  # So if we have lowercase `"unset"`, translations from `ru.formtastic.unset` will be overriden by `ru.active_admin.status_tag.unset`.
+  #
+  UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
 
   MISSING_TRANSLATION_ERROR_MSG = <<~HEREDOC
-
-
     For ActiveAdmin status tags in index & view tables:
     ru:
       active_admin:
@@ -118,6 +116,10 @@ class TristateRadioInput
   end
 
 
+  # @return [String] stringified HTML of fieldset with labels, radios & texts in it
+  #
+  # This method relies on ActiveAdmin
+  #
   # choice_wrapping_html_options(choice) #=> { class: "choice" }
   #
   # legend_html         => "<legend class="label">
@@ -142,7 +144,9 @@ class TristateRadioInput
   #      ...
   #    ]
   #
-  # This method relies on ActiveAdmin
+  # @example
+  #   to_html
+  #   #=> ""
   #
   def to_html
     choices = collection_with_unset #=> [["Completed", "completed"], ["In progress", "in_progress"], ["Unknown", "unset"]]

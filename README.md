@@ -1,10 +1,12 @@
 # Formtastic tri-state radio
 
+[![Gem Version](https://badge.fury.io/rb/formtastic_tristate_radio.svg)](https://badge.fury.io/rb/formtastic_tristate_radio)
+
 ## What is “tri-state”?
 
 — that which has 3 states.
 
-By defenition Boolean values have 2 states: True | False.
+By defenition Boolean values have 2 states: True & False.
 
 However, if you store a Boolean value in a database column with no `NOT FULL` restriction, it aquires a 3d possible state: `null`.
 

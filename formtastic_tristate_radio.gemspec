@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.description      =  "#{spec.summary}. Does not change controls, you need to turn it on via `as: :tristate_radio` option."
   spec.email            = ["sergey.pedan@gmail.com"]
   spec.executables      =   spec.files.grep(%r{\A#{spec.bindir}/}) { |f| File.basename(f) }
-  spec.extra_rdoc_files = ["README.md"]
+  spec.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
   spec.files              = Dir["{app,config,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
 # spec.files            =  `git ls-files`.split("\n")
   spec.homepage         =  "https://github.com/sergeypedan/formtastic-tristate-radio"

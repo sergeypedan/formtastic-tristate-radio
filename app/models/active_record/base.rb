@@ -2,7 +2,11 @@
 
 class ActiveRecord::Base
 
-  # @return [Array] of symbols — names of Boolean columns, which can be `NULL`
+  # @return [Array<Symbol>] names of Boolean columns which can store `NULL` values
+  # @example
+  #  Company.tristate_column_names
+  #  #=> [:is_profitable, :is_run_by_psychopaths, :evades_taxation, ...]
+  #
   def self.tristate_column_names
     columns.select { |col| col.type == :boolean && col.null }.map(&:name)
   end
