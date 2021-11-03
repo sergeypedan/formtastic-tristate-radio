@@ -4,16 +4,16 @@
 
 — that which has 3 states.
 
-Boolean values may have 2 states: True | False.
+By defenition Boolean values have 2 states: True | False.
 
-However, if you store them in a database column with no `NOT FULL` restriction, they aquire a 3d possible state: `null`.
+However, if you store a Boolean value in a database column with no `NOT FULL` restriction, it aquires a 3d possible state: `null`.
 
-Some may say this is a questionable practice — I don’t think so. In real life you always have a case when the answer to your question may be only “yes” or “no”, but you don’t know the answer yet. Using a string type column, storing there `"yes"`, `"no"` and "`unset"` + using a state machine + validations feels overkill to me.
+Some may say this is a questionable practice — I don’t think so. In real life you always have a case when the answer to your question may be only “yes” or “no”, but you don’t know the answer yet. Using a string type column, storing there `"yes"`, `"no"` and `"unset"` + using a state machine + validations — feels overkill to me.
 
 
 ## What the gem does
 
-1. Provides a custom Formtastic input type `:tristate_radio` which renders 3 radios (Yes, No, Unset) instead of a checkbox (only where you put it).
+1. Provides a custom Formtastic input type `:tristate_radio` which renders 3 radios (“Yes”, “No”, “Unset”) instead of a checkbox (only where you put it).
 1. Teaches Rails recognize `"null"` and `"nil"` param values as `nil`. See “[How it works](#how-it-works)” ☟ section for technical details on this.
 1. Encourages you to add translations for ActiveAdmin “status tag” so that `nil` be correctly translated as “Unset” instead of “False”.
 
@@ -23,21 +23,18 @@ Some may say this is a questionable practice — I don’t think so. In real li
 For a Boolean column with 3 possible states:
 
 ```ruby
-f.input :i_love_rock_and_roll, as: :tristate_radio
+f.input :column_name, as: :tristate_radio
 ```
 
-You get:
+You get (HTML is simplified):
 
+```html
 <fieldset>
-  <input type="radio">
-  <label>Yes</label>
-  <br>
-  <input type="radio">
-  <label>No</label>
-  <br>
-  <input type="radio" checked>
-  <label>Unset</label>
+  <input name="column_name" type="radio" value="true">  <label>Yes</label>
+  <input name="column_name" type="radio" value="false"> <label>No</label>
+  <input name="column_name" type="radio" value="null">  <label>Unset</label>
 </fieldset>
+```
 
 In the future `:tristate_radio` will be registered for Boolean columns with `null` by default. Until then you have to assign it manually.
 
