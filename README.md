@@ -8,7 +8,7 @@
 
 By defenition Boolean values have 2 states: True & False.
 
-However, if you store a Boolean value in a database column with no `NOT FULL` restriction, it aquires a 3d possible state: `null`.
+However, if you store a Boolean value in a database column with no `NOT NULL` restriction, it aquires a 3d possible state: `null`.
 
 Some may say this is a questionable practice — I don’t think so. In real life you always have a case when the answer to your question may be only “yes” or “no”, but you don’t know the answer yet. Using a string type column, storing there `"yes"`, `"no"` and `"unset"` + using a state machine + validations — feels overkill to me.
 
