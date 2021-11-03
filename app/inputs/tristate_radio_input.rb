@@ -9,6 +9,9 @@ class TristateRadioInput
   include Formtastic::Inputs::Base::Collections
   include Formtastic::Inputs::Base::Choices
 
+  # @!attribute [r] template
+  #   @return [Fixnum] the size of the list
+
 
   # No equals `:null`.
   #
@@ -38,28 +41,65 @@ class TristateRadioInput
   HEREDOC
 
 
-  # template => an instance of ActionView::Base
+  # @example How it works under the hood
+  #   choice_html(["Да", true])
+  #   #=> "<label for=\"model_attribute_true\">
+  #   #=>   <input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />
+  #   #=>   Да
+  #   #=> </label>"
   #
-  # @param choice [Array], ["Completed", "completed"]
+  # @param choice [Array<Label text, choice value>]
+  #
+  # @return [String] stringified HTML of the <label> tag (with radiobutton and text inside) that stands for the unknown choice.
   #
   def choice_html(choice)
+    # template #=> => #<ActionView::Base:0x00000000024c20> (an instance of ActionView::Base)
     template.content_tag(:label, tag_content(choice), tag_options(choice))
   end
 
-
-  # collection => [["Completed", "completed"], ["In progress", "in_progress"], ["Unknown", "unset"]]
+  # @!method choice_value(choice)
   #
-  # @return [Array]
+  #   @note This method is inherited from Formtastic and is described here as it is heavily used.
+  #
+  #   @example
+  #     choice_value(["Да", true]) #=> true
+  #     choice_value(["Нет", false]) #=> false
+  #     choice_value(["Неизвестно", :null]) #=> :null
+  #
+  #   @param choice [Array<String, Boolean|String|Symbol>]
+  #
+  #   @return [Any] whichever value is the 2nd of the passed array
+
+
+  # @example What this method brings about
+  #   collection_with_unset #=> [["Да", true], ["Нет", false], ["Неизвестно", :null]]
+  #
+  # @return [Array<String, Boolean|String|Symbol>]
   #
   def collection_with_unset
     collection + [[unset_label_translation, UNSET_KEY]]
   end
 
 
-  # Override to remove the for attribute since this isn't associated with any element, as it's nested inside the legend
+  # @!method collection
+  #
+  #   @example
+  #     collection #=> [["Да", true], ["Нет", false]]
+  #
+  #   @return [Array<String, Boolean|String|Symbol>]
+
+  # @todo Remove `collection_with_unset` and just override `collection`
+  #
+  # def collection
+  #   raw_collection.map { |o| [send_or_call(label_method, o), send_or_call(value_method, o)] } + [[unset_label_translation, UNSET_KEY]]
+  # end
+
+
+  # Override to remove the `for=""` attribute, since this isn't associated with any element, as it's nested inside the legend
+  #
   # @return [Hash]
   #
-  # @example
+  # @example How it works under the hood
   #   { for: nil, class: ["label"] }
   #
   def label_html_options
@@ -67,37 +107,60 @@ class TristateRadioInput
   end
 
 
-  # choice_value(choice) => true | false | UNSET_KEY <- in our version
-  # choice_value(choice) => true | false | ?         <- in regular radio-buttons version
-  # method               => :status
-  # object               => ActiveRecord::Base model subclass, `User`
+  # @note This method is overriden only to provide clear documentation, as it is heavily used in this class.
   #
-  # @param choice [Array], ["Completed", "completed"]
+  # @example
+  #   legend_html #=>
+  #   "<legend class=\"label\">
+  #     <label>Human attribute name</label>
+  #   </legend>"
   #
-  # For this to work, ActiveModel::Type::Boolean must be patched to resolve `UNSET_KEY` as nil
+  # @return [String] stringified HTML of the legend of the inputs group
+  #
+  # def legend_html
+  #   super
+  # end
+
+
+  # @example For each result of `collection_with_unset` it runs:
+  #   selected?(["Да", true]) #=> false
+  #   selected?(["Нет", false]) #=> false
+  #   selected?(["Неизвестно", :null]) #=> true
+  #
+  # @param choice [Array<String, Boolean|String|Symbol>]
+  #
+  # @return [Boolean] answer to the question “Is the passed option selected?”
+  #
+  # @note For this to work, `ActiveModel::Type::Boolean` must be patched to resolve `UNSET_KEY` as `nil`.
   #
   def selected?(choice)
+    # method               => :status
+    # object               => ActiveRecord::Base model subclass, `User`
+    #
     ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
   end
 
 
-  # @returns [String]
-  #   "<input ...> Text..."
+  # @example
+  #   tag_content(["Да", true])
+  #   #=> "<input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />Да"
   #
-  # @param choice [Array], ["Completed", "completed"]
+  # @param choice [Array<String, Boolean|String|Symbol>]
   #
-  # input_html_options => { id: "task_status", required: false, autofocus: false, readonly: false}
-  #
-  # input_html_options.merge(choice_html_options(choice)).merge({ required: false })
-  # => { id: "task_status_completed", required: false, autofocus: false, readonly: false }
-  #
-  # builder                     => an instance of ActiveAdmin::FormBuilder
-  # choice_label(choice)        => "Completed"
-  # choice_html_options(choice) => { id: "task_status_completed" }
-  # choice_value(choice)        => "completed"
-  # input_name                  => :status
+  # @return [String] stringified HTML for the input tag + its text
   #
   def tag_content(choice)
+
+    # input_html_options => { id: "task_status", required: false, autofocus: false, readonly: false}
+    #
+    # input_html_options.merge(choice_html_options(choice)).merge({ required: false })
+    # => { id: "task_status_completed", required: false, autofocus: false, readonly: false }
+    #
+    # builder                     => an instance of ActiveAdmin::FormBuilder
+    # choice_label(choice)        => "Completed"
+    # choice_html_options(choice) => { id: "task_status_completed" }
+    # input_name                  => :status
+
     builder.radio_button(
       input_name,
       choice_value(choice),
@@ -106,58 +169,80 @@ class TristateRadioInput
   end
 
 
-  # choice_input_dom_id(choice) => "task_status_completed"
-  # label_html_options          => { for: nil, class: ["label"] }
+  # Options for a HTML tag builder
   #
-  # @param choice [Array], ["Completed", "completed"]
+  # @example
+  #   tag_options(["Да", true])          #=> { for: "model_attribute_true", class: nil }
+  #   tag_options(["Неизвестно", :null]) #=> { for: "model_attribute_null", class: nil }
+  #
+  # @param choice [Array<String, Boolean|String|Symbol>]
+  #
+  # @return [Hash]
   #
   def tag_options(choice)
+    # choice_input_dom_id(choice) => "task_status_completed"
+    # label_html_options          => { for: nil, class: ["label"] }
     label_html_options.merge({ for: choice_input_dom_id(choice), class: nil })
   end
 
 
   # @return [String] stringified HTML of fieldset with labels, radios & texts in it
   #
-  # This method relies on ActiveAdmin
-  #
-  # choice_wrapping_html_options(choice) #=> { class: "choice" }
-  #
-  # legend_html         => "<legend class="label">
-  #                           <label>Status</label>
-  #                         </legend>"
-  #
-  # choice_html(choice) => "<label for="task_status_completed">
-  #                           <input type="radio" value="completed" name="task[status]" /> Completed
-  #                         </label>"
-  #
-  # collection.map do |choice|
-  #   choice_wrapping({ class: "choice" }) do
-  #     choice_html(choice)
-  #   end
-  # end
-  # => ["<li class="choice">
-  #        <label for="task_status_completed">
-  #          <input type="radio" value="completed" name="task[status]" /> Completed
-  #        </label>
-  #      </li>",
-  #     "<li class="choice">
-  #      ...
-  #    ]
-  #
   # @example
-  #   to_html
-  #   #=> ""
+  #   to_html #=>
+  #   "<li class=\"tristate_radio input optional\" id=\"model_attribute_input\">
+  #     <fieldset class=\"choices\">
+  #       <legend class=\"label\">
+  #         <label>Human attribute name</label>
+  #       </legend>
+  #       <ol class=\"choices-group\">
+  #       <li class=\"choice\">
+  #         <label for=\"model_attribute_true\">
+  #           <input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />
+  #           Да
+  #         </label>
+  #       </li>
+  #       <li class=\"choice\">
+  #         <label for=\"model_attribute_false\">
+  #           <input id=\"model_attribute_false\" type=\"radio\" value=\"false\" name=\"model[attribute]\" />
+  #           Нет
+  #         </label>
+  #       </li>
+  #       <li class=\"choice\">
+  #         <label for=\"model_attribute_null\">
+  #           <input id=\"model_attribute_null\" type=\"radio\" value=\"null\" checked=\"checked\" name=\"model[attribute]\" />
+  #           Неизвестно
+  #         </label>
+  #       </li>
+  #       </ol>
+  #     </fieldset>
+  #   </li>"
   #
   def to_html
-    choices = collection_with_unset #=> [["Completed", "completed"], ["In progress", "in_progress"], ["Unknown", "unset"]]
+    # choice_wrapping_html_options(choice) #=> { class: "choice" }
+    #
+    # collection.map do |choice|
+    #   choice_wrapping({ class: "choice" }) do
+    #     choice_html(choice)
+    #   end
+    # end
+    #
+    # => ["<li class="choice">
+    #        <label for="task_status_completed">
+    #          <input type="radio" value="completed" name="task[status]" /> Completed
+    #        </label>
+    #      </li>",
+    #     "<li class="choice">
+    #      ...
+    #    ]
 
     input_wrapping do
       choices_wrapping do
         legend_html <<  choices_group_wrapping do
-                          choices.map { |choice|
-                            choice_wrapping(choice_wrapping_html_options(choice)) do
+                          collection_with_unset.map { |choice|
+                            choice_wrapping(choice_wrapping_html_options(choice)) {
                               choice_html(choice)
-                            end
+                            }
                           }.join("\n").html_safe
                         end
       end
@@ -165,7 +250,13 @@ class TristateRadioInput
   end
 
 
+  # @example
+  #   unset_label_translation #=> "Неизвестно"
+  #
   # @return [String] Label of the radio that stands for the unknown choice
+  #
+  # @raise [StandardError] if the translation could not be found
+  # @see MISSING_TRANSLATION_ERROR_MSG
   #
   def unset_label_translation
     Formtastic::I18n.t(UNSET_KEY).presence or fail StandardError.new(MISSING_TRANSLATION_ERROR_MSG)
