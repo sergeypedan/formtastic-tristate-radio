@@ -1,6 +1,8 @@
 # Formtastic tri-state radio
 
 [![Gem Version](https://badge.fury.io/rb/formtastic_tristate_radio.svg)](https://badge.fury.io/rb/formtastic_tristate_radio)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c2508d7f23238fb2b87f/maintainability)](https://codeclimate.com/github/sergeypedan/formtastic-tristate-radio/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c2508d7f23238fb2b87f/test_coverage)](https://codeclimate.com/github/sergeypedan/formtastic-tristate-radio/test_coverage)
 
 ## What is “tri-state”?
 
