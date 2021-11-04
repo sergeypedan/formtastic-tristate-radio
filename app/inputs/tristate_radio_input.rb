@@ -114,8 +114,9 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   # @return [Array<String, Boolean|String|Symbol>]
   #
-  def collection
-    # raw_collection.map { |o| [send_or_call(label_method, o), send_or_call(value_method, o)] } + [[unset_label_translation, UNSET_KEY]]
+  # @see https://github.com/formtastic/formtastic/blob/e34baba470d2fda75bf9748cff8898ee0ed29075/lib/formtastic/inputs/base/collections.rb#L131 Original Formtastic method
+  #
+  def collection_for_boolean
     super + [[unset_label_translation, UNSET_KEY]]
   end
 
