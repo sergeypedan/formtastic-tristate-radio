@@ -52,21 +52,29 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
 
-  MISSING_I18N_ERROR_MSG = <<~HEREDOC
-    For ActiveAdmin status tags in index & view tables:
+  I18N_EXAMPLE_ACTIVEADMIN = <<~YAML
     ru:
       active_admin:
         status_tag:
           :yes: Да
           :no: Нет
           :#{UNSET_KEY}: Неизвестно
+  YAML
 
-    For radiobutton labels in forms:
+  I18N_EXAMPLE_FORMTASTIC = <<~YAML
     ru:
       formtastic:
         :yes: Да
         :no: Нет
         :#{UNSET_KEY}: Неизвестно
+  YAML
+
+  MISSING_I18N_ERROR_MSG = <<~HEREDOC
+    For ActiveAdmin status tags in index & view tables:
+    #{I18N_EXAMPLE_ACTIVEADMIN}
+
+    For radiobutton labels in forms:
+    #{I18N_EXAMPLE_FORMTASTIC}
 
     Note: “yes”, “no” and some other reserved words are converted into Boolean values in YAML, so you need to quote or symbolize them.
   HEREDOC
