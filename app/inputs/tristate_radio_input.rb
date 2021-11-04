@@ -106,11 +106,17 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base/choices.rb#L55 Original Formtastic method
 
 
-  # @example
-  #   collection #=> [["Да", true], ["Нет", false]]
+  # @example Original method
+  #   def collection_for_boolean
+  #     true_text  = options[:true]  || Formtastic::I18n.t(:yes)
+  #     false_text = options[:false] || Formtastic::I18n.t(:no)
+  #     [ [true_text, true], [false_text, false] ]
+  #   end
   #
-  # @example What this method brings about
-  #   collection #=> [["Да", true], ["Нет", false], ["Неизвестно", :null]]
+  #   collection_for_boolean #=> [["Да", true], ["Нет", false]]
+  #
+  # @example This patched method
+  #   collection_for_boolean #=> [["Да", true], ["Нет", false], ["Неизвестно", :null]]
   #
   # @return [Array<String, Boolean|String|Symbol>]
   #
