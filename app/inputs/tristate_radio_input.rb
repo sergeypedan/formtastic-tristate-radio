@@ -103,19 +103,17 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @note This method is overriden only to provide clear documentation, as it is heavily used in this class.
+  # @!method legend_html
   #
-  # @example
-  #   legend_html #=>
-  #   "<legend class=\"label\">
-  #     <label>Human attribute name</label>
-  #   </legend>"
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
   #
-  # @return [String] stringified HTML of the legend of the inputs group
+  #   @example
+  #     legend_html #=>
+  #     "<legend class=\"label\">
+  #       <label>Human attribute name</label>
+  #     </legend>"
   #
-  # def legend_html
-  #   super
-  # end
+  #   @return [String] stringified HTML of the legend of the inputs group
 
 
   # @example For each result of `collection_with_unset` it runs:
