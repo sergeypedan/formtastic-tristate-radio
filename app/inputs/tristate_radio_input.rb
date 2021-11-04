@@ -69,15 +69,18 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
         :#{UNSET_KEY}: Неизвестно
   YAML
 
-  MISSING_I18N_ERROR_MSG = <<~HEREDOC
-    For ActiveAdmin status tags in index & view tables:
-    #{I18N_EXAMPLE_ACTIVEADMIN}
 
-    For radiobutton labels in forms:
-    #{I18N_EXAMPLE_FORMTASTIC}
-
-    Note: “yes”, “no” and some other reserved words are converted into Boolean values in YAML, so you need to quote or symbolize them.
-  HEREDOC
+  # @note In you have ActiveAdmin installed, it will give you YAML example for ActiveAdmin as well, otherwise only for Formtastic
+  #
+  # @return [String] error message with YAML examples for the “unset” label translation lookup error
+  #
+  def self.missing_i18n_error_msg
+    msg = []
+    msg << ["For ActiveAdmin status tags in index & view tables:", I18N_EXAMPLE_ACTIVEADMIN].join("\n") if !!defined?(ActiveAdmin)
+    msg << ["For radiobutton labels in forms:", I18N_EXAMPLE_FORMTASTIC].join("\n")
+    msg << "Note: “yes”, “no” and some other reserved words are converted into Boolean values in YAML, so you need to quote or symbolize them."
+    msg.join("\n")
+  end
 
 
   # @example How it works under the hood
@@ -202,10 +205,10 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @return [String] Label of the radio that stands for the unknown choice
   #
   # @raise [StandardError] if the translation could not be found
-  # @see MISSING_I18N_ERROR_MSG
+  # @see missing_i18n_error_msg
   #
   def label_text_for_unset
-    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(MISSING_I18N_ERROR_MSG)
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(self.class.missing_i18n_error_msg)
   end
 
 
