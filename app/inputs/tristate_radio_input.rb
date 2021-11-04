@@ -135,48 +135,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @!method label_html_options
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L156 Original Formtastic method
-  #
-  #   Override to remove the `for=""` attribute, since this isn't associated with any element, as it's nested inside the legend
-  #
-  #   @return [Hash]
-  #
-  #   @example How it works under the hood
-  #     { for: nil, class: ["label"] }
-
-
-  # Checks translation passed as option, then checks in locale
-  #
-  # @example
-  #   label_text_for_unset #=> "Неизвестно"
-  #
-  # @return [String] Label of the radio that stands for the unknown choice
-  #
-  # @raise [StandardError] if the translation could not be found
-  # @see MISSING_I18N_ERROR_MSG
-  #
-  def label_text_for_unset
-    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(MISSING_I18N_ERROR_MSG)
-  end
-
-
-  # @!method legend_html
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   @example For `User#is_awesome`
-  #     legend_html #=>
-  #     "<legend class=\"label\">
-  #       <label>Is awesome</label>
-  #     </legend>"
-  #
-  #   @return [String] stringified HTML of the legend of the inputs group
-
-
   # @example
   #   input_tag_html(["Да", true])
   #   #=> "<input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />Да"
@@ -205,6 +163,20 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
+  # @!method label_html_options
+  #
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
+  #
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L156 Original Formtastic method
+  #
+  #   Override to remove the `for=""` attribute, since this isn't associated with any element, as it's nested inside the legend
+  #
+  #   @return [Hash]
+  #
+  #   @example How it works under the hood
+  #     { for: nil, class: ["label"] }
+
+
   # Options for a HTML tag builder
   #
   # @example
@@ -220,6 +192,34 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
     # label_html_options          => { for: nil, class: ["label"] }
     label_html_options.merge({ for: choice_input_dom_id(choice), class: nil })
   end
+
+
+  # Checks translation passed as option, then checks in locale
+  #
+  # @example
+  #   label_text_for_unset #=> "Неизвестно"
+  #
+  # @return [String] Label of the radio that stands for the unknown choice
+  #
+  # @raise [StandardError] if the translation could not be found
+  # @see MISSING_I18N_ERROR_MSG
+  #
+  def label_text_for_unset
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(MISSING_I18N_ERROR_MSG)
+  end
+
+
+  # @!method legend_html
+  #
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
+  #
+  #   @example For `User#is_awesome`
+  #     legend_html #=>
+  #     "<legend class=\"label\">
+  #       <label>Is awesome</label>
+  #     </legend>"
+  #
+  #   @return [String] stringified HTML of the legend of the inputs group
 
 
   # @example For each item of `collection` it runs:
