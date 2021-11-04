@@ -123,7 +123,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @see https://github.com/formtastic/formtastic/blob/e34baba470d2fda75bf9748cff8898ee0ed29075/lib/formtastic/inputs/base/collections.rb#L131 Original Formtastic method
   #
   def collection_for_boolean
-    super + [[unset_label_translation, UNSET_KEY]]
+    super + [[label_text_for_unset, UNSET_KEY]]
   end
 
 
@@ -139,6 +139,21 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   #   @example How it works under the hood
   #     { for: nil, class: ["label"] }
+
+
+  # Checks translation passed as option, then checks in locale
+  #
+  # @example
+  #   label_text_for_unset #=> "Неизвестно"
+  #
+  # @return [String] Label of the radio that stands for the unknown choice
+  #
+  # @raise [StandardError] if the translation could not be found
+  # @see MISSING_TRANSLATION_ERROR_MSG
+  #
+  def label_text_for_unset
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(MISSING_TRANSLATION_ERROR_MSG)
+  end
 
 
   # @!method legend_html
@@ -276,19 +291,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
                         end
       end
     end
-  end
-
-
-  # @example
-  #   unset_label_translation #=> "Неизвестно"
-  #
-  # @return [String] Label of the radio that stands for the unknown choice
-  #
-  # @raise [StandardError] if the translation could not be found
-  # @see MISSING_TRANSLATION_ERROR_MSG
-  #
-  def unset_label_translation
-    Formtastic::I18n.t(UNSET_KEY).presence or fail StandardError.new(MISSING_TRANSLATION_ERROR_MSG)
   end
 
 end
