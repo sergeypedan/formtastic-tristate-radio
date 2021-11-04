@@ -1,5 +1,13 @@
 # Changelog
 
-## [0.0.1] - 2021-01-03
+## [0.2.0] - 2021-11-04
+
+- Custom translation override from form via options
+- Custom error class
+- YARD documentation for everything
+- Inherits from `Formtastic::Inputs::RadioInput` and patches only necessary methods
+- Error YAML example for ActiveAdmin included only if ActiveAdmin is detected
+
+## [0.1.0] - 2021-11-01
 
 Initial release
