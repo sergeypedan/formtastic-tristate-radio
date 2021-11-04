@@ -55,16 +55,21 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method choice_value(choice)
   #
-  #   @note This method is inherited from Formtastic and is described here as it is heavily used.
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
   #
   #   @example
   #     choice_value(["Да", true]) #=> true
   #     choice_value(["Нет", false]) #=> false
   #     choice_value(["Неизвестно", :null]) #=> :null
   #
+  #   @example What it does under the hood
+  #     choice.is_a?(Array) ? choice[1] : choice
+  #
   #   @param choice [Array<String, Boolean|String|Symbol>]
   #
   #   @return [Any] whichever value is the 2nd of the passed array
+  #
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base/choices.rb#L55 Original Formtastic method
 
 
   # @example What this method brings about
