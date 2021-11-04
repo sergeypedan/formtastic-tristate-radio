@@ -84,22 +84,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @example How it works under the hood
-  #   choice_html(["Да", true])
-  #   #=> "<label for=\"model_attribute_true\">
-  #   #=>   <input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />
-  #   #=>   Да
-  #   #=> </label>"
-  #
-  # @param choice [Array<Label text, choice value>]
-  #
-  # @return [String] stringified HTML of the <label> tag (with radiobutton and text inside) that stands for the unknown choice.
-  #
-  def choice_html(choice)
-    template.content_tag(:label, input_tag_html(choice), label_tag_options(choice))
-  end
-
-
   # @see https://github.com/formtastic/formtastic/blob/35dc806964403cb2bb0a6074b951ceef906c8581/lib/formtastic/inputs/base/choices.rb#L59 Original Formtastic method
   #
   def choice_html_options(choice)
@@ -147,34 +131,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @example
-  #   input_tag_html(["Да", true])
-  #   #=> "<input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />Да"
-  #
-  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
-  #
-  # @return [String] stringified HTML for the input tag + its text
-  #
-  def input_tag_html(choice)
-
-    # input_html_options => { id: "task_status", required: false, autofocus: false, readonly: false}
-    #
-    # input_html_options.merge(choice_html_options(choice)).merge({ required: false })
-    # => { id: "task_status_completed", required: false, autofocus: false, readonly: false }
-    #
-    # builder                     => an instance of ActiveAdmin::FormBuilder
-    # choice_label(choice)        => "Completed"
-    # choice_html_options(choice) => { id: "task_status_completed" }
-    # input_name                  => :status
-
-    builder.radio_button(
-      input_name,
-      choice_value(choice),
-      input_html_options.merge(choice_html_options(choice)).merge({ required: false })
-    ) << choice_label(choice)
-  end
-
-
   # @!method label_html_options
   #
   #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
@@ -187,23 +143,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   #   @example How it works under the hood
   #     { for: nil, class: ["label"] }
-
-
-  # Options for a HTML tag builder
-  #
-  # @example
-  #   label_tag_options(["Да", true])          #=> { for: "model_attribute_true", class: nil }
-  #   label_tag_options(["Неизвестно", :null]) #=> { for: "model_attribute_null", class: nil }
-  #
-  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
-  #
-  # @return [Hash]
-  #
-  def label_tag_options(choice)
-    # choice_input_dom_id(choice) => "task_status_completed"
-    # label_html_options          => { for: nil, class: ["label"] }
-    label_html_options.merge({ for: choice_input_dom_id(choice), class: nil })
-  end
 
 
   # Checks translation passed as option, then checks in locale
