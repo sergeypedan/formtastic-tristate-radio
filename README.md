@@ -25,27 +25,38 @@ Some may consider this practice questionable — I don’t think so. In real
 For a Boolean column with 3 possible states:
 
 ```ruby
-f.input :column_name, as: :tristate_radio
+f.input :am_i_awake,      as: :tristate_radio
+f.input :is_this_a_dream, as: :tristate_radio, null: "Reality is a persistent hallucination"
 ```
 
-You get (HTML is simplified):
+You get (HTML is simplified, actually there are more classes etc.):
 
 ```html
 <fieldset>
-  <input name="column_name" type="radio" value="true">  <label>Yes</label>
-  <input name="column_name" type="radio" value="false"> <label>No</label>
-  <input name="column_name" type="radio" value="null">  <label>Unset</label>
+  <legend>Am i awake?</legend>
+  <input name="am_i_awake" type="radio" value="true">  <label>Yes</label>
+  <input name="am_i_awake" type="radio" value="false"> <label>No</label>
+  <input name="am_i_awake" type="radio" value="null">  <label>Unset</label>
+</fieldset>
+
+<fieldset>
+  <legend>Is this a dream?</legend>
+  <input name="is_this_a_dream" type="radio" value="true">  <label>Yes</label>
+  <input name="is_this_a_dream" type="radio" value="false"> <label>No</label>
+  <input name="is_this_a_dream" type="radio" value="null">  <label>Reality is a persistent hallucination</label>
 </fieldset>
 ```
-
-In the future `:tristate_radio` will be registered for Boolean columns with `null` by default. Until then you have to assign it manually.
 
 
 ## Installation
 
+### Gem
+
 ```ruby
 gem "formtastic_tristate_radio"
 ```
+
+### Translations
 
 Add translation for the new “unset” option:
 
@@ -56,6 +67,14 @@ ru:
     # :no: Нет       #    in Formtastic gem but have only English
     null: Неизвестно # <- this you must provide youself
 ```
+
+As noted in [Usage](#usage), you can override individual translations like so:
+
+```ruby
+f.input :attribute, as: :tristate_radio, null: "Your text"
+```
+
+### ActiveAdmin translations
 
 ActiveAdmin will automatically translate `nil` as “No”, so if you use ActiveAdmin, add translation like so:
 
@@ -148,6 +167,12 @@ ActiveModel::Type::Boolean.new.cast(:nil)   #=> nil
 ```
 
 **Warning**: as you might have noticed, default Rails behavior is changed. If you rely on Rails’ automatic conversion of strings with value `"null"` into `true`, this gem might not be for you (and you are definitely doing something weird).
+
+
+## Roadmap
+
+- [ ] Rgister `:tristate_radio` for Boolean columns with `null`
+- [ ] Decouple from Rails
 
 
 ## License
