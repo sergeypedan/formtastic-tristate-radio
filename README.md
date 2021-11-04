@@ -171,6 +171,8 @@ ActiveModel::Type::Boolean.new.cast(:nil)   #=> nil
 
 ## Roadmap
 
+- [ ] Load translations from gem
+- [ ] Add translations into most popular languages
 - [ ] Rgister `:tristate_radio` for Boolean columns with `null`
 - [ ] Decouple from Rails
 
