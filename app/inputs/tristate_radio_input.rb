@@ -78,28 +78,18 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base/choices.rb#L55 Original Formtastic method
 
 
+  # @example
+  #   collection #=> [["Да", true], ["Нет", false]]
+  #
   # @example What this method brings about
-  #   collection_with_unset #=> [["Да", true], ["Нет", false], ["Неизвестно", :null]]
+  #   collection #=> [["Да", true], ["Нет", false], ["Неизвестно", :null]]
   #
   # @return [Array<String, Boolean|String|Symbol>]
   #
-  def collection_with_unset
-    collection + [[unset_label_translation, UNSET_KEY]]
+  def collection
+    # raw_collection.map { |o| [send_or_call(label_method, o), send_or_call(value_method, o)] } + [[unset_label_translation, UNSET_KEY]]
+    super + [[unset_label_translation, UNSET_KEY]]
   end
-
-
-  # @!method collection
-  #
-  #   @example
-  #     collection #=> [["Да", true], ["Нет", false]]
-  #
-  #   @return [Array<String, Boolean|String|Symbol>]
-
-  # @todo Remove `collection_with_unset` and just override `collection`
-  #
-  # def collection
-  #   raw_collection.map { |o| [send_or_call(label_method, o), send_or_call(value_method, o)] } + [[unset_label_translation, UNSET_KEY]]
-  # end
 
 
   # @!method label_html_options
@@ -129,7 +119,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   @return [String] stringified HTML of the legend of the inputs group
 
 
-  # @example For each result of `collection_with_unset` it runs:
+  # @example For each result of `collection` it runs:
   #   selected?(["Да", true]) #=> false
   #   selected?(["Нет", false]) #=> false
   #   selected?(["Неизвестно", :null]) #=> true
@@ -246,7 +236,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
     input_wrapping do
       choices_wrapping do
         legend_html <<  choices_group_wrapping do
-                          collection_with_unset.map { |choice|
+                          collection.map { |choice|
                             choice_wrapping(choice_wrapping_html_options(choice)) {
                               choice_html(choice)
                             }
