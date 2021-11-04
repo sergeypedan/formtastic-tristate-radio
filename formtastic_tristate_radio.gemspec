@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.license          =  "MIT"
   spec.name             = "formtastic_tristate_radio"
   spec.metadata         = {
-    "changelog_uri"     => "#{spec.homepage}/blob/master/Changelog.md",
+    "changelog_uri"     => "#{spec.homepage}/blob/master/CHANGELOG.md",
     "documentation_uri" => "https://www.rubydoc.info/gems/#{spec.name}",
     "homepage_uri"      => spec.homepage,
     "source_code_uri"   => spec.homepage
