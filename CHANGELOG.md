@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1] - 2021-11-04
+
+- Updates docs URL in gemspec
+- Updates change-log URL in gemspec
+- Removes development gems
+
 ## [0.2.0] - 2021-11-04
 
 - Custom translation override from form via options
