@@ -94,13 +94,19 @@ Notice that the key ActiveAdmin uses is “unset”, not “null”.
 
 ## Configuration
 
-It’s difficult to come up with a reasonable use case for that, but you can configure, which key will be used as inputs value:
+It’s difficult to come up with a reasonable use case for that, but you can configure what will be used as inputs value:
 
 ```ruby
 # config/initializers/formtastic.rb
 FormtasticTristateRadio.configure do |config|
-  config.unset_key = "null" # default is :null
+  config.unset_key = "__unset" # default is :null
 end
+```
+
+which will result in:
+
+```html
+<input name="am_i_awake" type="radio" value="__unset"> <label>Unset</label>
 ```
 
 Mind that for that to work, you also need to configure `ActiveModel` to recognize that value as `nil`. Currently that is done [like so](https://github.com/sergeypedan/formtastic-tristate-radio/blob/master/config/initializers/activemodel_type_boolean.rb#L9).
