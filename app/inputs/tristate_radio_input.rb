@@ -7,7 +7,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!attribute [r] method
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
   #
   #   Defined in `Formtastic::Inputs::Base#initialize`
   #
@@ -21,7 +21,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!attribute [r] object
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
   #
   #   Defined in `Formtastic::Inputs::Base#initialize`
   #
@@ -35,7 +35,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!attribute [r] template
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
   #
   #   Defined in `Formtastic::Inputs::Base#initialize`
   #
@@ -68,7 +68,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
         :no: Нет
         :#{UNSET_KEY}: Неизвестно
 
-    Note: “yes”, “no”, “null” and some other words are reserved, converted into Boolean values in YAML, so you need to quote or symbolize them.
+    Note: “yes”, “no” and some other reserved words are converted into Boolean values in YAML, so you need to quote or symbolize them.
   HEREDOC
 
 
@@ -89,7 +89,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method choice_value(choice)
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
   #
   #   @example
   #     choice_value(["Да", true]) #=> true
@@ -99,7 +99,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   @example What it does under the hood
   #     choice.is_a?(Array) ? choice[1] : choice
   #
-  #   @param choice [Array<String, Boolean|String|Symbol>]
+  #   @param choice [Array<[String, (Boolean|String|Symbol)]>]
   #
   #   @return [Any] whichever value is the 2nd of the passed array
   #
@@ -118,7 +118,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @example This patched method
   #   collection_for_boolean #=> [["Да", true], ["Нет", false], ["Неизвестно", :null]]
   #
-  # @return [Array<String, Boolean|String|Symbol>]
+  # @return [Array<[String, (Boolean|String|Symbol)]>] an array of “choices”, each presented as an array with 2 items: HTML label text and HTML input value
   #
   # @see https://github.com/formtastic/formtastic/blob/e34baba470d2fda75bf9748cff8898ee0ed29075/lib/formtastic/inputs/base/collections.rb#L131 Original Formtastic method
   #
@@ -129,7 +129,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method label_html_options
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
   #
   #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L156 Original Formtastic method
   #
@@ -158,23 +158,23 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method legend_html
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
   #
-  #   @example
+  #   @example For `User#is_awesome`
   #     legend_html #=>
   #     "<legend class=\"label\">
-  #       <label>Human attribute name</label>
+  #       <label>Is awesome</label>
   #     </legend>"
   #
   #   @return [String] stringified HTML of the legend of the inputs group
 
 
-  # @example For each result of `collection` it runs:
+  # @example For each item of `collection` it runs:
   #   selected?(["Да", true]) #=> false
   #   selected?(["Нет", false]) #=> false
   #   selected?(["Неизвестно", :null]) #=> true
   #
-  # @param choice [Array<String, Boolean|String|Symbol>]
+  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
   #
   # @return [Boolean] answer to the question “Is the passed option selected?”
   #
@@ -189,7 +189,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   input_tag_html(["Да", true])
   #   #=> "<input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />Да"
   #
-  # @param choice [Array<String, Boolean|String|Symbol>]
+  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
   #
   # @return [String] stringified HTML for the input tag + its text
   #
@@ -219,7 +219,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   label_tag_options(["Да", true])          #=> { for: "model_attribute_true", class: nil }
   #   label_tag_options(["Неизвестно", :null]) #=> { for: "model_attribute_null", class: nil }
   #
-  # @param choice [Array<String, Boolean|String|Symbol>]
+  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
   #
   # @return [Hash]
   #
@@ -232,29 +232,29 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @return [String] stringified HTML of fieldset with labels, radios & texts in it
   #
-  # @example
+  # @example For `User#is_awesome`
   #   to_html #=>
-  #   "<li class=\"tristate_radio input optional\" id=\"model_attribute_input\">
+  #   "<li class=\"tristate_radio input optional\" id=\"user_is_awesome_input\">
   #     <fieldset class=\"choices\">
   #       <legend class=\"label\">
-  #         <label>Human attribute name</label>
+  #         <label>Is awesome</label>
   #       </legend>
   #       <ol class=\"choices-group\">
   #       <li class=\"choice\">
-  #         <label for=\"model_attribute_true\">
-  #           <input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />
+  #         <label for=\"user_is_awesome_true\">
+  #           <input id=\"user_is_awesome_true\" type=\"radio\" value=\"true\" name=\"user[is_awesome]\" />
   #           Да
   #         </label>
   #       </li>
   #       <li class=\"choice\">
-  #         <label for=\"model_attribute_false\">
-  #           <input id=\"model_attribute_false\" type=\"radio\" value=\"false\" name=\"model[attribute]\" />
+  #         <label for=\"user_is_awesome_false\">
+  #           <input id=\"user_is_awesome_false\" type=\"radio\" value=\"false\" name=\"user[is_awesome]\" />
   #           Нет
   #         </label>
   #       </li>
   #       <li class=\"choice\">
-  #         <label for=\"model_attribute_null\">
-  #           <input id=\"model_attribute_null\" type=\"radio\" value=\"null\" checked=\"checked\" name=\"model[attribute]\" />
+  #         <label for=\"user_is_awesome_null\">
+  #           <input id=\"user_is_awesome_null\" type=\"radio\" value=\"null\" checked=\"checked\" name=\"user[is_awesome]\" />
   #           Неизвестно
   #         </label>
   #       </li>
