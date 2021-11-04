@@ -6,7 +6,14 @@ require "formtastic"
 class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!attribute [r] template
-  #   @return [Fixnum] the size of the list
+  #
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
+  #
+  #   Defined in `Formtastic::Inputs::Base#initialize`
+  #
+  #   @return [ActionView::Base] Rails template builder
+  #
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base.rb#L8 Original Formtastic method
 
 
   # No equals `:null`.
@@ -49,7 +56,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @return [String] stringified HTML of the <label> tag (with radiobutton and text inside) that stands for the unknown choice.
   #
   def choice_html(choice)
-    # template #=> => #<ActionView::Base:0x00000000024c20> (an instance of ActionView::Base)
     template.content_tag(:label, input_tag_html(choice), label_tag_options(choice))
   end
 
