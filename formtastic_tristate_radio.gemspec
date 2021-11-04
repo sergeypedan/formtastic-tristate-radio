@@ -42,9 +42,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "formtastic", ">= 3", "< 5"
   spec.add_dependency "rails",      ">= 4", "< 7"
-
-  spec.add_development_dependency "coveralls", "~> 0.2"
-  spec.add_development_dependency "pry",       "~> 0.14"
-  spec.add_development_dependency "rake",      "~> 13"
-  spec.add_development_dependency "yard",      "~> 0.9"
 end

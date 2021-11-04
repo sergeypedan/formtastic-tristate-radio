@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formtastic_tristate_radio (0.1.0)
+    formtastic_tristate_radio (0.2.0)
       formtastic (>= 3, < 5)
       rails (>= 4, < 7)
 
@@ -68,16 +68,8 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     builder (3.2.4)
-    coderay (1.1.3)
     concurrent-ruby (1.1.9)
-    coveralls (0.8.23)
-      json (>= 1.8, < 3)
-      simplecov (~> 0.16.1)
-      term-ansicolor (~> 1.3)
-      thor (>= 0.19.4, < 2.0)
-      tins (~> 1.6)
     crass (1.0.6)
-    docile (1.4.0)
     erubi (1.10.0)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -85,7 +77,6 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    json (2.6.1)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -98,9 +89,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
-    pry (0.14.1)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
     racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -132,11 +120,6 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
-    simplecov (0.16.1)
-      docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -144,29 +127,19 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sync (0.5.0)
-    term-ansicolor (1.7.1)
-      tins (~> 1.0)
     thor (1.1.0)
-    tins (1.29.1)
-      sync
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    yard (0.9.26)
     zeitwerk (2.5.1)
 
 PLATFORMS
   x86_64-darwin-17
 
 DEPENDENCIES
-  coveralls (~> 0.2)
   formtastic_tristate_radio!
-  pry (~> 0.14)
-  rake (~> 13)
-  yard (~> 0.9)
 
 BUNDLED WITH
    2.2.27
