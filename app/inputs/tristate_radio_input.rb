@@ -52,7 +52,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
 
-  MISSING_TRANSLATION_ERROR_MSG = <<~HEREDOC
+  MISSING_I18N_ERROR_MSG = <<~HEREDOC
     For ActiveAdmin status tags in index & view tables:
     ru:
       active_admin:
@@ -149,10 +149,10 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @return [String] Label of the radio that stands for the unknown choice
   #
   # @raise [StandardError] if the translation could not be found
-  # @see MISSING_TRANSLATION_ERROR_MSG
+  # @see MISSING_I18N_ERROR_MSG
   #
   def label_text_for_unset
-    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(MISSING_TRANSLATION_ERROR_MSG)
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(MISSING_I18N_ERROR_MSG)
   end
 
 
