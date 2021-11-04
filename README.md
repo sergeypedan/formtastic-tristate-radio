@@ -95,6 +95,11 @@ Notice that the key ActiveAdmin uses is “unset”, not “null”.
 Nothing is configurable yet. I think of making configurable which values are regognized as `nil`.
 
 
+## Documentation
+
+Low-level methods are properly documented in RubyDoc [here](https://www.rubydoc.info/gems/formtastic_tristate_radio/).
+
+
 ## Dependencies
 
 Now the gem depends on [Formtastic](https://github.com/formtastic/formtastic) (naturally) and Rails. Frankly I am not sure whether I will have time to make it work with other frameworks.
