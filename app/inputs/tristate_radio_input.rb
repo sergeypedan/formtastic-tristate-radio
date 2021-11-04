@@ -5,9 +5,37 @@ require "formtastic"
 # It may also be appropriate to put this file in `app/inputs`
 class TristateRadioInput < Formtastic::Inputs::RadioInput
 
+  # @!attribute [r] method
+  #
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #
+  #   Defined in `Formtastic::Inputs::Base#initialize`
+  #
+  #   @return [Symbol] the name of the model attribute
+  #
+  #   @example For `User#is_awesome`
+  #     method #=> :is_awesome
+  #
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base.rb#L8 Original Formtastic method
+
+
+  # @!attribute [r] object
+  #
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
+  #
+  #   Defined in `Formtastic::Inputs::Base#initialize`
+  #
+  #   @return [ActiveRecord::Base] concrete model subclass
+  #
+  #   @example
+  #     object #=> User
+  #
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base.rb#L8 Original Formtastic method
+
+
   # @!attribute [r] template
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
   #
   #   Defined in `Formtastic::Inputs::Base#initialize`
   #
@@ -61,7 +89,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method choice_value(choice)
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
   #
   #   @example
   #     choice_value(["Да", true]) #=> true
@@ -94,7 +122,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method label_html_options
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
   #
   #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L156 Original Formtastic method
   #
@@ -108,7 +136,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!method legend_html
   #
-  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is used in this class.
   #
   #   @example
   #     legend_html #=>
@@ -131,9 +159,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @note For this to work, `ActiveModel::Type::Boolean` must be patched to resolve `UNSET_KEY` as `nil`.
   #
   def selected?(choice)
-    # method               => :status
-    # object               => ActiveRecord::Base model subclass, `User`
-    #
     ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
   end
 
