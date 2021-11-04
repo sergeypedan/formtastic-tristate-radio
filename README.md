@@ -94,7 +94,16 @@ Notice that the key ActiveAdmin uses is “unset”, not “null”.
 
 ## Configuration
 
-Nothing is configurable yet. I think of making configurable which values are regognized as `nil`.
+It’s difficult to come up with a reasonable use case for that, but you can configure, which key will be used as inputs value:
+
+```ruby
+# config/initializers/formtastic.rb
+FormtasticTristateRadio.configure do |config|
+  config.unset_key = "null" # default is :null
+end
+```
+
+Mind that for that to work, you also need to configure `ActiveModel` to recognize that value as `nil`. Currently that is done [like so](https://github.com/sergeypedan/formtastic-tristate-radio/blob/master/config/initializers/activemodel_type_boolean.rb#L9).
 
 
 ## Documentation
@@ -178,10 +187,10 @@ ActiveModel::Type::Boolean.new.cast(:nil)   #=> nil
 
 ## Roadmap
 
+- [x] Make the gem configurable
+- [x] Pull the key used for “unset” choice value into configuration
 - [ ] Load translations from gem
 - [ ] Add translations into most popular languages
-- [ ] Make the gem configurable
-- [ ] Pull the key used for “unset” choice value into configuration
 - [ ] Rgister `:tristate_radio` for Boolean columns with `null`
 - [ ] Decouple `ActiveModel::Type::Boolean` thing from Formtastic things, maybe into a separate gem
 - [ ] Decouple from Rails

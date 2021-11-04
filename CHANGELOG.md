@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.2.2] - 2021-11-05
+
+- Make the gem configurable
+- Pull the key used for “unset” choice value into configuration
+
 ## [0.2.1] - 2021-11-04
 
 - Updates docs URL in gemspec
