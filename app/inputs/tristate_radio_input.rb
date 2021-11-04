@@ -50,7 +50,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   def choice_html(choice)
     # template #=> => #<ActionView::Base:0x00000000024c20> (an instance of ActionView::Base)
-    template.content_tag(:label, tag_content(choice), tag_options(choice))
+    template.content_tag(:label, input_tag_html(choice), tag_options(choice))
   end
 
   # @!method choice_value(choice)
@@ -143,14 +143,14 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
 
   # @example
-  #   tag_content(["Да", true])
+  #   input_tag_html(["Да", true])
   #   #=> "<input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />Да"
   #
   # @param choice [Array<String, Boolean|String|Symbol>]
   #
   # @return [String] stringified HTML for the input tag + its text
   #
-  def tag_content(choice)
+  def input_tag_html(choice)
 
     # input_html_options => { id: "task_status", required: false, autofocus: false, readonly: false}
     #
