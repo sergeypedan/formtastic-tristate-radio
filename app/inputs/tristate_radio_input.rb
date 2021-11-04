@@ -3,11 +3,7 @@
 require "formtastic"
 
 # It may also be appropriate to put this file in `app/inputs`
-class TristateRadioInput
-
-  include Formtastic::Inputs::Base
-  include Formtastic::Inputs::Base::Collections
-  include Formtastic::Inputs::Base::Choices
+class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @!attribute [r] template
   #   @return [Fixnum] the size of the list
