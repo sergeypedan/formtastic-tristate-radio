@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formtastic_tristate_radio (0.2.0)
+    formtastic_tristate_radio (0.2.1)
       formtastic (>= 3, < 5)
       rails (>= 4, < 7)
 
@@ -70,6 +70,7 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    diff-lcs (1.4.4)
     erubi (1.10.0)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -120,6 +121,19 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.1)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.3)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -141,6 +155,7 @@ PLATFORMS
 
 DEPENDENCIES
   formtastic_tristate_radio!
+  rspec (~> 3)
   yard (>= 0.9, < 1)
 
 BUNDLED WITH
