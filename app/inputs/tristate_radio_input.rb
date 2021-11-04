@@ -177,22 +177,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #   @return [String] stringified HTML of the legend of the inputs group
 
 
-  # @example For each item of `collection` it runs:
-  #   selected?(["Да", true]) #=> false
-  #   selected?(["Нет", false]) #=> false
-  #   selected?(["Неизвестно", :null]) #=> true
-  #
-  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
-  #
-  # @return [Boolean] answer to the question “Is the passed option selected?”
-  #
-  # @note For this to work, `ActiveModel::Type::Boolean` must be patched to resolve `UNSET_KEY` as `nil`.
-  #
-  def selected?(choice)
-    ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
-  end
-
-
   # @example
   #   input_tag_html(["Да", true])
   #   #=> "<input id=\"model_attribute_true\" type=\"radio\" value=\"true\" name=\"model[attribute]\" />Да"
@@ -235,6 +219,22 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
     # choice_input_dom_id(choice) => "task_status_completed"
     # label_html_options          => { for: nil, class: ["label"] }
     label_html_options.merge({ for: choice_input_dom_id(choice), class: nil })
+  end
+
+
+  # @example For each item of `collection` it runs:
+  #   selected?(["Да", true]) #=> false
+  #   selected?(["Нет", false]) #=> false
+  #   selected?(["Неизвестно", :null]) #=> true
+  #
+  # @param choice [Array<[String, (Boolean|String|Symbol)]>]
+  #
+  # @return [Boolean] answer to the question “Is the passed option selected?”
+  #
+  # @note For this to work, `ActiveModel::Type::Boolean` must be patched to resolve `UNSET_KEY` as `nil`.
+  #
+  def selected?(choice)
+    ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
   end
 
 
