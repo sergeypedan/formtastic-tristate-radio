@@ -5,45 +5,6 @@ require "formtastic"
 # It may also be appropriate to put this file in `app/inputs`
 class TristateRadioInput < Formtastic::Inputs::RadioInput
 
-  # @!attribute [r] method
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   Defined in `Formtastic::Inputs::Base#initialize`
-  #
-  #   @return [Symbol] the name of the model attribute
-  #
-  #   @example For `User#is_awesome`
-  #     method #=> :is_awesome
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base.rb#L8 Original Formtastic method
-
-
-  # @!attribute [r] object
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   Defined in `Formtastic::Inputs::Base#initialize`
-  #
-  #   @return [ActiveRecord::Base] concrete model subclass
-  #
-  #   @example
-  #     object #=> User
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base.rb#L8 Original Formtastic method
-
-
-  # @!attribute [r] template
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   Defined in `Formtastic::Inputs::Base#initialize`
-  #
-  #   @return [ActionView::Base] Rails template builder
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base.rb#L8 Original Formtastic method
-
-
   # No equals `:null`.
   #
   # Mind ActiveAdmin [status resolving logic](https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/views/components/status_tag.rb#L51):
@@ -91,25 +52,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @!method choice_value(choice)
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   @example
-  #     choice_value(["Да", true]) #=> true
-  #     choice_value(["Нет", false]) #=> false
-  #     choice_value(["Неизвестно", :null]) #=> :null
-  #
-  #   @example What it does under the hood
-  #     choice.is_a?(Array) ? choice[1] : choice
-  #
-  #   @param choice [Array<[String, (Boolean|String|Symbol)]>]
-  #
-  #   @return [Any] whichever value is the 2nd of the passed array
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/base/choices.rb#L55 Original Formtastic method
-
-
   # @example Original method
   #   def collection_for_boolean
   #     true_text  = options[:true]  || Formtastic::I18n.t(:yes)
@@ -131,20 +73,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @!method label_html_options
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L156 Original Formtastic method
-  #
-  #   Override to remove the `for=""` attribute, since this isn't associated with any element, as it's nested inside the legend
-  #
-  #   @return [Hash]
-  #
-  #   @example How it works under the hood
-  #     { for: nil, class: ["label"] }
-
-
   # Checks translation passed as option, then checks in locale
   #
   # @example
@@ -161,19 +89,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   end
 
 
-  # @!method legend_html
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   @example For `User#is_awesome`
-  #     legend_html #=>
-  #     "<legend class=\"label\">
-  #       <label>Is awesome</label>
-  #     </legend>"
-  #
-  #   @return [String] stringified HTML of the legend of the inputs group
-
-
   # @example For each item of `collection` it runs:
   #   selected?(["Да", true]) #=> false
   #   selected?(["Нет", false]) #=> false
@@ -188,44 +103,5 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   def selected?(choice)
     ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
   end
-
-
-  # @!method to_html
-  #
-  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
-  #
-  #   @example For `User#is_awesome`
-  #     to_html #=>
-  #     "<li class=\"tristate_radio input optional\" id=\"user_is_awesome_input\">
-  #       <fieldset class=\"choices\">
-  #         <legend class=\"label\">
-  #           <label>Is awesome</label>
-  #         </legend>
-  #         <ol class=\"choices-group\">
-  #         <li class=\"choice\">
-  #           <label for=\"user_is_awesome_true\">
-  #             <input id=\"user_is_awesome_true\" type=\"radio\" value=\"true\" name=\"user[is_awesome]\" />
-  #             Да
-  #           </label>
-  #         </li>
-  #         <li class=\"choice\">
-  #           <label for=\"user_is_awesome_false\">
-  #             <input id=\"user_is_awesome_false\" type=\"radio\" value=\"false\" name=\"user[is_awesome]\" />
-  #             Нет
-  #           </label>
-  #         </li>
-  #         <li class=\"choice\">
-  #           <label for=\"user_is_awesome_null\">
-  #             <input id=\"user_is_awesome_null\" type=\"radio\" value=\"null\" checked=\"checked\" name=\"user[is_awesome]\" />
-  #             Неизвестно
-  #           </label>
-  #         </li>
-  #         </ol>
-  #       </fieldset>
-  #     </li>"
-  #
-  #   @return [String] stringified HTML of the whole fieldset tag with legend, inputs and labels inside
-  #
-  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L133 Original Formtastic method
 
 end
