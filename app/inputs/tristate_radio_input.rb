@@ -91,16 +91,18 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # end
 
 
-  # Override to remove the `for=""` attribute, since this isn't associated with any element, as it's nested inside the legend
+  # @!method label_html_options
   #
-  # @return [Hash]
+  #   @note This method is not defined in this gem, and its documentation is given only because, it is heavily used in this class.
   #
-  # @example How it works under the hood
-  #   { for: nil, class: ["label"] }
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L156 Original Formtastic method
   #
-  def label_html_options
-    super.merge({ for: nil })
-  end
+  #   Override to remove the `for=""` attribute, since this isn't associated with any element, as it's nested inside the legend
+  #
+  #   @return [Hash]
+  #
+  #   @example How it works under the hood
+  #     { for: nil, class: ["label"] }
 
 
   # @!method legend_html
