@@ -242,4 +242,43 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
     ActiveModel::Type::Boolean.new.cast(choice_value(choice)) == object.public_send(method)
   end
 
+
+  # @!method to_html
+  #
+  #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
+  #
+  #   @example For `User#is_awesome`
+  #     to_html #=>
+  #     "<li class=\"tristate_radio input optional\" id=\"user_is_awesome_input\">
+  #       <fieldset class=\"choices\">
+  #         <legend class=\"label\">
+  #           <label>Is awesome</label>
+  #         </legend>
+  #         <ol class=\"choices-group\">
+  #         <li class=\"choice\">
+  #           <label for=\"user_is_awesome_true\">
+  #             <input id=\"user_is_awesome_true\" type=\"radio\" value=\"true\" name=\"user[is_awesome]\" />
+  #             Да
+  #           </label>
+  #         </li>
+  #         <li class=\"choice\">
+  #           <label for=\"user_is_awesome_false\">
+  #             <input id=\"user_is_awesome_false\" type=\"radio\" value=\"false\" name=\"user[is_awesome]\" />
+  #             Нет
+  #           </label>
+  #         </li>
+  #         <li class=\"choice\">
+  #           <label for=\"user_is_awesome_null\">
+  #             <input id=\"user_is_awesome_null\" type=\"radio\" value=\"null\" checked=\"checked\" name=\"user[is_awesome]\" />
+  #             Неизвестно
+  #           </label>
+  #         </li>
+  #         </ol>
+  #       </fieldset>
+  #     </li>"
+  #
+  #   @return [String] stringified HTML of the whole fieldset tag with legend, inputs and labels inside
+  #
+  #   @see https://github.com/formtastic/formtastic/blob/master/lib/formtastic/inputs/radio_input.rb#L133 Original Formtastic method
+
 end
