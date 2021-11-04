@@ -99,6 +99,14 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
     template.content_tag(:label, input_tag_html(choice), label_tag_options(choice))
   end
 
+
+  # @see https://github.com/formtastic/formtastic/blob/35dc806964403cb2bb0a6074b951ceef906c8581/lib/formtastic/inputs/base/choices.rb#L59 Original Formtastic method
+  #
+  def choice_html_options(choice)
+    super.merge({ checked: selected?(choice) })
+  end
+
+
   # @!method choice_value(choice)
   #
   #   @note This method is not defined in this gem, and its documentation is given only because it is used in this class.
@@ -162,7 +170,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
     builder.radio_button(
       input_name,
       choice_value(choice),
-      input_html_options.merge(choice_html_options(choice)).merge({ required: false, checked: selected?(choice) })
+      input_html_options.merge(choice_html_options(choice)).merge({ required: false })
     ) << choice_label(choice)
   end
 
