@@ -52,7 +52,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
 
-  I18N_EXAMPLE_ACTIVEADMIN = <<~YAML
+  I18N_EXAMPLE_ACTIVEADMIN = <<~YAML.chomp
     ru:
       active_admin:
         status_tag:
@@ -61,7 +61,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
           :#{UNSET_KEY}: Неизвестно
   YAML
 
-  I18N_EXAMPLE_FORMTASTIC = <<~YAML
+  I18N_EXAMPLE_FORMTASTIC = <<~YAML.chomp
     ru:
       formtastic:
         :yes: Да
