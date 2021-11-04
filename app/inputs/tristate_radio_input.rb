@@ -6,12 +6,13 @@ require "formtastic"
 class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # No equals `:null`.
+  # Should equal one of `ActiveModel::Type::Boolean::NULL_VALUES`
   #
   # Mind ActiveAdmin [status resolving logic](https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/views/components/status_tag.rb#L51):
   # in status tag builder the value is lowercased before casting into Boolean, and the keyword for nil is `"unset"`.
   # So if we have lowercase `"unset"`, translations from `ru.formtastic.unset` will be overriden by `ru.active_admin.status_tag.unset`.
   #
-  UNSET_KEY = ActiveModel::Type::Boolean::NULL_VALUES.reject(&:blank?).first
+  UNSET_KEY = FormtasticTristateRadio.config.unset_key
 
   I18N_EXAMPLE_ACTIVEADMIN = <<~YAML.chomp
     ru:
