@@ -47,6 +47,10 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
 
   # @see https://github.com/formtastic/formtastic/blob/35dc806964403cb2bb0a6074b951ceef906c8581/lib/formtastic/inputs/base/choices.rb#L59 Original Formtastic method
   #
+  # @return [Hash] HTML options for the `<input type="radio" />` tag
+  #
+  # Adds `{ selected: true }` to the original options Hash if the choice value equals attribute value (to ultimately set for `checked="checked"`)
+  #
   def choice_html_options(choice)
     super.merge({ checked: selected?(choice) })
   end
