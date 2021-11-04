@@ -76,10 +76,11 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   def self.missing_i18n_error_msg
     msg = []
-    msg << ["For ActiveAdmin status tags in index & view tables:", I18N_EXAMPLE_ACTIVEADMIN].join("\n") if !!defined?(ActiveAdmin)
+    msg << "Add translations for the “unset” radio label"
     msg << ["For radiobutton labels in forms:", I18N_EXAMPLE_FORMTASTIC].join("\n")
     msg << "Note: “yes”, “no” and some other reserved words are converted into Boolean values in YAML, so you need to quote or symbolize them."
-    msg.join("\n")
+    msg << ["For ActiveAdmin status tags in index & view tables:", I18N_EXAMPLE_ACTIVEADMIN].join("\n") if !!defined?(ActiveAdmin)
+    msg.join("\n\n")
   end
 
 
@@ -208,7 +209,8 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @see missing_i18n_error_msg
   #
   def label_text_for_unset
-    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail StandardError.new(self.class.missing_i18n_error_msg)
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or \
+      fail FormtasticTristateRadio::MissingTranslationError.new(self.class.missing_i18n_error_msg)
   end
 
 

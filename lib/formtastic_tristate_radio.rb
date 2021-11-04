@@ -3,4 +3,7 @@ require_relative "formtastic_tristate_radio/engine"
 require_relative "../app/models/active_record/base"
 
 module FormtasticTristateRadio
+
+  class MissingTranslationError < StandardError; end
+
 end
