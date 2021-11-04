@@ -50,7 +50,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   def choice_html(choice)
     # template #=> => #<ActionView::Base:0x00000000024c20> (an instance of ActionView::Base)
-    template.content_tag(:label, input_tag_html(choice), tag_options(choice))
+    template.content_tag(:label, input_tag_html(choice), label_tag_options(choice))
   end
 
   # @!method choice_value(choice)
@@ -173,14 +173,14 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # Options for a HTML tag builder
   #
   # @example
-  #   tag_options(["Да", true])          #=> { for: "model_attribute_true", class: nil }
-  #   tag_options(["Неизвестно", :null]) #=> { for: "model_attribute_null", class: nil }
+  #   label_tag_options(["Да", true])          #=> { for: "model_attribute_true", class: nil }
+  #   label_tag_options(["Неизвестно", :null]) #=> { for: "model_attribute_null", class: nil }
   #
   # @param choice [Array<String, Boolean|String|Symbol>]
   #
   # @return [Hash]
   #
-  def tag_options(choice)
+  def label_tag_options(choice)
     # choice_input_dom_id(choice) => "task_status_completed"
     # label_html_options          => { for: nil, class: ["label"] }
     label_html_options.merge({ for: choice_input_dom_id(choice), class: nil })
