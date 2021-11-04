@@ -19,13 +19,13 @@ Gem::Specification.new do |spec|
 # spec.files            =  `git ls-files`.split("\n")
   spec.homepage         =  "https://github.com/sergeypedan/formtastic-tristate-radio"
   spec.license          =  "MIT"
+  spec.name             = "formtastic_tristate_radio"
   spec.metadata         = {
     "changelog_uri"     => "#{spec.homepage}/blob/master/Changelog.md",
     "documentation_uri" => "https://www.rubydoc.info/gems/#{spec.name}",
     "homepage_uri"      => spec.homepage,
     "source_code_uri"   => spec.homepage
   }
-  spec.name             = "formtastic_tristate_radio"
   spec.platform         =  Gem::Platform::RUBY
   spec.rdoc_options     = ["--charset=UTF-8"]
   spec.require_paths    = ["lib", "app/inputs", "app/models/active_record", "config/initializers", "config/locales"]
