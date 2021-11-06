@@ -193,6 +193,7 @@ ActiveModel::Type::Boolean.new.cast(:nil)   #=> nil
 
 ## Roadmap
 
+- [ ] Remove `require_relative "../app/models/active_record/base"` from main file
 - [x] Make the gem configurable
 - [x] Pull the key used for “unset” choice value into configuration
 - [ ] Load translations from gem
