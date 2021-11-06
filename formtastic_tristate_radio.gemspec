@@ -25,9 +25,9 @@ Gem::Specification.new do |spec|
                             "homepage_uri"      => spec.homepage,
                             "source_code_uri"   => spec.homepage }
 
-  spec.require_paths    = ["lib", "app/inputs", "app/models/active_record", "config/initializers", "config/locales"]
-  spec.bindir           =  "exe"
-  spec.executables      =  []
+  spec.require_paths    = ["app/inputs", "app/models/active_record", "config/initializers", "config/locales", "lib"]
+  spec.bindir           = "exe"
+  spec.executables      = []
   spec.files            = Dir.chdir(File.expand_path(__dir__)) do
                             `git ls-files`.split("\n")
                               .reject { |f| %w[bin spec test].any? { |dir| f.start_with? dir } }
