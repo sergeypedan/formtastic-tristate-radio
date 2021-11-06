@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 module FormtasticTristateRadio
-  class MissingTranslationError < StandardError
+  class MissingTranslationError < I18n::MissingTranslationData
   end
 end
