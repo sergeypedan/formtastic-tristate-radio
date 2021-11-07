@@ -138,7 +138,7 @@ In Ruby any String is cast to `true`:
 
 Web form params are passed as plain text and are interpreted as String by Rack.
 
-So how Boolean values are transfered as strings if a `"no"` or `"0"` and even `""` is truthy in Ruby?
+So how are Boolean values transfered as strings if a `"no"` or `"0"` and even `""` is truthy in Ruby?
 
 Frameworks just have a list of string values to be recognized and mapped to Boolean values:
 
