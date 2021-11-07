@@ -106,6 +106,8 @@ end
 which will result in:
 
 ```html
+<input type="radio" name="am_i_awake" value="true">
+<input type="radio" name="am_i_awake" value="false">
 <input type="radio" name="am_i_awake" value="__unset">
 ```
 
