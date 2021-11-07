@@ -106,15 +106,15 @@ end
 which will result in:
 
 ```html
-<input name="am_i_awake" type="radio" value="__unset"> <label>Unset</label>
+<input type="radio" name="am_i_awake" value="__unset">
 ```
 
-Mind that for that to work, you also need to configure `ActiveModel` to recognize that value as `nil`. Currently that is done [like so](https://github.com/sergeypedan/formtastic-tristate-radio/blob/master/config/initializers/activemodel_type_boolean.rb#L9).
+Mind that for your custom value to work, you also need to configure `ActiveModel` to recognize that value as `nil`. Currently that is done [like so](https://github.com/sergeypedan/formtastic-tristate-radio/blob/master/config/initializers/activemodel_type_boolean.rb#L9).
 
 
 ## Documentation
 
-Low-level methods are properly documented in RubyDoc [here](https://www.rubydoc.info/gems/formtastic_tristate_radio/).
+Low-level methods are properly documented in RubyDoc [here](https://www.rubydoc.info/gems/formtastic_tristate_radio/TristateRadioInput).
 
 
 ## Dependencies
