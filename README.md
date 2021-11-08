@@ -27,8 +27,7 @@ Some may consider this practice questionable — I don’t think so. In real
 For a Boolean column with 3 possible states:
 
 ```ruby
-f.input :am_i_awake,      as: :tristate_radio
-f.input :is_this_a_dream, as: :tristate_radio, null: "Reality is a persistent hallucination"
+f.input :am_i_awake, as: :tristate_radio
 ```
 
 You get (HTML is simplified, actually there are more classes etc.):
@@ -39,13 +38,6 @@ You get (HTML is simplified, actually there are more classes etc.):
   <input name="am_i_awake" type="radio" value="true">  <label>Yes</label>
   <input name="am_i_awake" type="radio" value="false"> <label>No</label>
   <input name="am_i_awake" type="radio" value="null">  <label>Unset</label>
-</fieldset>
-
-<fieldset>
-  <legend>Is this a dream?</legend>
-  <input name="is_this_a_dream" type="radio" value="true">  <label>Yes</label>
-  <input name="is_this_a_dream" type="radio" value="false"> <label>No</label>
-  <input name="is_this_a_dream" type="radio" value="null">  <label>Reality is a persistent hallucination</label>
 </fieldset>
 ```
 
