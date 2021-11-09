@@ -56,7 +56,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @see missing_i18n_error_msg
   #
   def label_text_for_unset
-    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail FormtasticTristateRadio::I18n::Error.new(locale, UNSET_KEY)
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail FormtasticTristateRadio::I18n::Error.new(I18n.locale, UNSET_KEY)
   end
 
 
