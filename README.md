@@ -190,8 +190,8 @@ ActiveModel::Type::Boolean.new.cast(:nil)   #=> nil
 - [ ] Remove `require_relative "../app/models/active_record/base"` from main file
 - [x] Make the gem configurable
 - [x] Pull the key used for “unset” choice value into configuration
+- [x] Add translations into most popular languages
 - [ ] Load translations from gem
-- [ ] Add translations into most popular languages
 - [ ] Rgister `:tristate_radio` for Boolean columns with `null`
 - [ ] Decouple `ActiveModel::Type::Boolean` thing from Formtastic things, maybe into a separate gem
 - [ ] Decouple from Rails
