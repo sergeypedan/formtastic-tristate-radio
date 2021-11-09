@@ -27,7 +27,7 @@ module FormtasticTristateRadio
         #
         # @return [String] error message with YAML examples for the “unset” label translation lookup error
         #
-        # @see URL https://github.com/ruby-i18n/i18n/blob/master/lib/i18n/exceptions.rb#L63 Original I18n method
+        # @see https://github.com/ruby-i18n/i18n/blob/master/lib/i18n/exceptions.rb#L63 Original I18n method
         #
         def message
           msg = []
