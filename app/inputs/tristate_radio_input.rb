@@ -52,8 +52,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   #
   # @return [String] Label of the radio that stands for the unknown choice
   #
-  # @raise [StandardError] if the translation could not be found
-  # @see missing_i18n_error_msg
+  # @raise [FormtasticTristateRadio::I18n::Error] if the translation could not be found
   #
   def label_text_for_unset
     options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail FormtasticTristateRadio::I18n::Error.new(I18n.locale, UNSET_KEY)
