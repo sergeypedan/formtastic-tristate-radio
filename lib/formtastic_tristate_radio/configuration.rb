@@ -20,10 +20,23 @@ module FormtasticTristateRadio
   # @see https://brandonhilkert.com/blog/ruby-gem-configuration-patterns/
   #
   class Configuration
-    attr_accessor :unset_key
 
     def initialize
       @unset_key = :null
+    end
+
+    # @!attribute [r] unset_key
+    #   @return [Symbol, String] the value of <var>@unset_key</var>
+    #
+    attr_reader :unset_key
+
+    # @return [Symbol, String, Integer] value that was passed into the method
+    #
+    # @raise [TypeError] because no other types seem to make sence here
+    #
+    def unset_key=(value)
+      fail TypeError, "`unset_key` must be a Symbol, String or Integer" unless [Symbol, String, Integer].include? value.class
+      @unset_key = value
     end
   end
 
