@@ -14,6 +14,11 @@ module FormtasticTristateRadio
     yield(config)
   end
 
+  # Configuration block pattern
+  #
+  # @see https://thoughtbot.com/blog/mygem-configure-block
+  # @see https://brandonhilkert.com/blog/ruby-gem-configuration-patterns/
+  #
   class Configuration
     attr_accessor :unset_key
 

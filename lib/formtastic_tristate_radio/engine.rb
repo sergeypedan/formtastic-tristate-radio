@@ -3,7 +3,7 @@
 module FormtasticTristateRadio
 
   # This is standard Rails way to autoload gem’s contents dynamically as an “engine”
-  # https://guides.rubyonrails.org/engines.html
+  # @see https://guides.rubyonrails.org/engines.html Rails guide on engines
   #
   class Engine < ::Rails::Engine
   end
