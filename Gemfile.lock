@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formtastic_tristate_radio (0.2.2)
+    formtastic_tristate_radio (0.2.3)
       formtastic (>= 3, < 5)
       rails (>= 4, < 7)
 
@@ -156,7 +156,7 @@ PLATFORMS
 DEPENDENCIES
   formtastic_tristate_radio!
   rspec (~> 3)
-  yard (~> 0)
+  yard (>= 0.9.20, < 1)
 
 BUNDLED WITH
    2.2.27
