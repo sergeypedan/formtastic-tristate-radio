@@ -5,7 +5,7 @@ require "formtastic"
 # It may also be appropriate to put this file in `app/inputs`
 class TristateRadioInput < Formtastic::Inputs::RadioInput
 
-  # No equals `:null`.
+  # Now equals `:null`.
   # Should equal one of `ActiveModel::Type::Boolean::NULL_VALUES`
   #
   # Mind ActiveAdmin [status resolving logic](https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/views/components/status_tag.rb#L51):
