@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "formtastic"
-
 # It may also be appropriate to put this file in `app/inputs`
 class TristateRadioInput < Formtastic::Inputs::RadioInput
 
@@ -13,37 +11,6 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # So if we have lowercase `"unset"`, translations from `ru.formtastic.unset` will be overriden by `ru.active_admin.status_tag.unset`.
   #
   UNSET_KEY = FormtasticTristateRadio.config.unset_key
-
-  I18N_EXAMPLE_ACTIVEADMIN = <<~YAML.chomp
-    ru:
-      active_admin:
-        status_tag:
-          :yes: Да
-          :no: Нет
-          :#{UNSET_KEY}: Неизвестно
-  YAML
-
-  I18N_EXAMPLE_FORMTASTIC = <<~YAML.chomp
-    ru:
-      formtastic:
-        :yes: Да
-        :no: Нет
-        :#{UNSET_KEY}: Неизвестно
-  YAML
-
-
-  # @note In you have ActiveAdmin installed, it will give you YAML example for ActiveAdmin as well, otherwise only for Formtastic
-  #
-  # @return [String] error message with YAML examples for the “unset” label translation lookup error
-  #
-  def self.missing_i18n_error_msg
-    msg = []
-    msg << "Add translations for the “unset” radio label"
-    msg << ["For radiobutton labels in forms:", I18N_EXAMPLE_FORMTASTIC].join("\n")
-    msg << "Note: “yes”, “no” and some other reserved words are converted into Boolean values in YAML, so you need to quote or symbolize them."
-    msg << ["For ActiveAdmin status tags in index & view tables:", I18N_EXAMPLE_ACTIVEADMIN].join("\n") if !!defined?(ActiveAdmin)
-    msg.join("\n\n")
-  end
 
 
   # @see https://github.com/formtastic/formtastic/blob/35dc806964403cb2bb0a6074b951ceef906c8581/lib/formtastic/inputs/base/choices.rb#L59 Original Formtastic method
@@ -89,8 +56,7 @@ class TristateRadioInput < Formtastic::Inputs::RadioInput
   # @see missing_i18n_error_msg
   #
   def label_text_for_unset
-    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or \
-      fail FormtasticTristateRadio::MissingTranslationError.new(self.class.missing_i18n_error_msg)
+    options.fetch(:null, Formtastic::I18n.t(UNSET_KEY)).presence or fail FormtasticTristateRadio::I18n::Error.new(locale, UNSET_KEY)
   end
 
 
