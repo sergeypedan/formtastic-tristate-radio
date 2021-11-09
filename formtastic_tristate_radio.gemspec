@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.description      = <<~HEREDOC
                             #{spec.summary}. This gem:
                             1. Provides a custom Formtastic input type `:tristate_radio` which renders 3 radios (“Yes”, “No”, “Unset”) instead of a checkbox (only where you put it).
-                            2. Teaches Rails recognize `"null"` and `"nil"` param values as `nil`. See “[How it works](#how-it-works)” ☟ section for technical details on this.
+                            2. Teaches Rails recognize `"null"` and `"nil"` param values as `nil`
                             3. Encourages you to add translations for ActiveAdmin “status tag” so that `nil` be correctly translated as “Unset” instead of “False”.
                             Does not change controls, you need to turn it on via `as: :tristate_radio` option.
                           HEREDOC
