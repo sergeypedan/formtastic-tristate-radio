@@ -1,0 +1,60 @@
+---
+ca:
+  active_admin:
+    status_tag:
+      :null: No establert
+---
+de:
+  active_admin:
+    status_tag:
+      :null: Nicht eingestellt
+---
+fr:
+  active_admin:
+    status_tag:
+      :null: Pas défini
+---
+it:
+  active_admin:
+    status_tag:
+      :null: Sconosciuto
+---
+ja:
+  active_admin:
+    status_tag:
+      :null: 不明
+---
+en:
+  active_admin:
+    status_tag:
+      :null: Unset
+---
+es:
+  active_admin:
+    status_tag:
+      :null: No establecido
+---
+pl:
+  active_admin:
+    status_tag:
+      :null: Nie ustawiony
+---
+pt-BR:
+  active_admin:
+    status_tag:
+      :null: Não configurado
+---
+pt:
+  active_admin:
+    status_tag:
+      :null: Não configurado
+---
+ru:
+  active_admin:
+    status_tag:
+      :null: Неизвестно
+---
+tr:
+  active_admin:
+    status_tag:
+      :null: Ayarlanmadı

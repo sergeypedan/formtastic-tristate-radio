@@ -1,0 +1,48 @@
+---
+ca:
+  formtastic:
+    :null: No establert
+---
+de:
+  formtastic:
+    :null: Nicht eingestellt
+---
+fr:
+  formtastic:
+    :null: Pas défini
+---
+it:
+  formtastic:
+    :null: Sconosciuto
+---
+ja:
+  formtastic:
+    :null: 不明
+---
+en:
+  formtastic:
+    :null: Unset
+---
+es:
+  formtastic:
+    :null: No establecido
+---
+pl:
+  formtastic:
+    :null: Nie ustawiony
+---
+pt-BR:
+  formtastic:
+    :null: Não configurado
+---
+pt:
+  formtastic:
+    :null: Não configurado
+---
+ru:
+  formtastic:
+    :null: Неизвестно
+---
+tr:
+  formtastic:
+    :null: Ayarlanmadı

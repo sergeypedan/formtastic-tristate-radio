@@ -1,7 +1,0 @@
----
-ru:
-  active_admin:
-    status_tag:
-      :no: Нет
-      :yes: Да
-      unset: Неизвестно
