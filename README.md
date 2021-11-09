@@ -62,7 +62,7 @@ ru:
     null: Неизвестно # <- this you must provide youself
 ```
 
-As noted in [Usage](#usage), you can override individual translations like so:
+You can override individual translations like so:
 
 ```ruby
 f.input :attribute, as: :tristate_radio, null: "Your text"
