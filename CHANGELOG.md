@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.5] - 2021-11-10
+
+- Corrects an error introduced in 0.2.4
+- Moves error-related code into a new module
+- Type-checks the `unset_value` passed into configuration
+
+## [0.2.4] - 2021-11-09
+
+- Add translations into most popular languages (although the problem with loading them seems to persist)
+
 ## [0.2.2] - 2021-11-05
 
 - Make the gem configurable
