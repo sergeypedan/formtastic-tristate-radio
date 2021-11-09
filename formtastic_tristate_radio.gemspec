@@ -15,7 +15,23 @@ Gem::Specification.new do |spec|
   spec.license          =  "MIT"
 
   spec.summary          =  "Have 3-state radiobuttons instead of a 2-state checkbox for your Boolean columns which can store NULL"
-  spec.description      =  "#{spec.summary}. Does not change controls, you need to turn it on via `as: :tristate_radio` option."
+  spec.description      = <<~HEREDOC
+                            #{spec.summary}.
+
+                            What the gem does?
+
+                            1. Provides a custom Formtastic input type `:tristate_radio` which renders 3 radios (“Yes”, “No”, “Unset”) instead of a checkbox (only where you put it).
+                            1. Teaches Rails recognize `"null"` and `"nil"` param values as `nil`. See “[How it works](#how-it-works)” ☟ section for technical details on this.
+                            1. Encourages you to add translations for ActiveAdmin “status tag” so that `nil` be correctly translated as “Unset” instead of “False”.
+
+                            Does not change controls, you need to turn it on via `as: :tristate_radio` option.
+
+                            By defenition Boolean values have 2 states: True & False.
+
+                            However, if you store a Boolean value in a database column with no `NOT NULL` restriction, it aquires a 3<sup>d</sup> possible state: `null`.
+
+                            Some may consider this practice questionable — I don’t think so. In real life you always have a case when the answer to your question may be only “yes” or “no”, but you don’t know the answer yet. Using a string type column, storing there `"yes"`, `"no"` and `"unset"` + using a state machine + validations — feels overkill to me.
+                          HEREDOC
 
   spec.homepage         =  "https://github.com/sergeypedan/formtastic-tristate-radio"
   spec.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
