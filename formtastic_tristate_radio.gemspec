@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   spec.add_dependency "formtastic", ">= 3", "< 5"
-  spec.add_dependency "rails",      ">= 4", "< 7"
+  spec.add_dependency "rails",      ">= 4", "< 8"
 
   spec.add_development_dependency "rspec", "~> 3"
   spec.add_development_dependency "yard",  ">= 0.9.20", "< 1"
