@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.7] - 2022-06-10
+
+- Corrects load bug introduced in the previous version (probably due to changed loading behavior in Rails)
+
+## [0.2.6] - 2022-06-10
+
+- Upgrades dependencies in Gemfile.lock
+
 ## [0.2.5] - 2021-11-10
 
 - Corrects an error introduced in 0.2.4
